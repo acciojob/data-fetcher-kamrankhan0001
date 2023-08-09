@@ -1,13 +1,32 @@
 
-import React from "react";
+//import React from "react";
+
+
+import React, { useState, useEffect } from "react";
 import './../styles/App.css';
 
-const App = () => {
+const DataFetcher = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Fetch data from the API
+    fetch("https://dummyjson.com/products")
+      .then(response => response.json())
+      .then(data => {
+        // Update the state with the fetched data
+        setData(data);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+  }, []); // Empty dependency array to ensure useEffect runs only once
+
   return (
     <div>
-        {/* Do not remove the main div */}
+      <h2>Fetched Data:</h2>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default DataFetcher;
