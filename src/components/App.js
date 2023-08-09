@@ -23,7 +23,7 @@ const DataFetcher = () => {
 
   return (
     <div>
-      <h2>Fetched Data:</h2>
+      <h1>Data Fetched from API</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
